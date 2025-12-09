@@ -1,0 +1,705 @@
+\documentclass[a4paper,oneside,11pt]{article}
+%\documentclass[final,3p,times]{elsarticle}
+\renewcommand{\baselinestretch}{1.22}
+%\usepackage[sort]{natbib}
+\usepackage{tabularx}
+\usepackage{cite}
+\usepackage{hyperref}
+%\usepackage{multirow}
+%\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[T1]{fontenc}
+%\usepackage{amsmath}
+%\usepackage{graphicx}
+%\usepackage{natbib}
+%\usepackage[colorlinks=true,linkcolor=black, citecolor=blue, urlcolor=blue]{hyperref}
+%\usepackage{subcaption}
+%\usepackage{tikz}
+%\usepackage{epstopdf}
+%\usetikzlibrary{shapes}
+%\usetikzlibrary{spy}
+\usepackage[boxed,noend]{algorithm2e}
+%\captionsetup{compatibility=false}
+%% or use the epsfig package if you prefer to use the old commands
+ \usepackage{epsfig}
+%% The amssymb package provides various useful mathematical symbols
+%
+%\usepackage[colorlinks,citecolor=blue,urlcolor=blue,bookmarks=false,hypertexnames=true]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{mathrsfs}
+\usepackage{float}
+%\usepackage{amssymb}
+\usepackage{epic,eepic}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{spy}
+
+%\pagestyle{fancy}
+%% The amsthm package provides extended theorem environments
+% \usepackage{amsthm}
+% \usepackage{cite}
+%theorems
+%\newtheorem{mylem}{Lemma}
+%\newtheorem{mydef}{Definition}
+%\newtheorem{mythm}{Theorem}
+%\newtheorem{mynot}{Notation}
+%\newtheorem{myprop}{Proposition}
+%\newtheorem{myhyp}{Assumption}
+
+\newtheorem{property}{property}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{problem}{Problem}
+%\theoremstyle{definition}
+ \newtheorem{definition}[theorem]{Definition}
+ \newtheorem{example}[theorem]{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\Inf}  {\mathop{\rm lim}}
+\renewcommand{\div}{\mathop{\rm div}}
+\renewcommand{\log}{\mathop{\rm log}}
+\newcommand{\meas}  {\mathop{\rm meas}}
+\newcommand{\Span}  {\mathop{\rm Span}}
+\newcommand{\Var}  {\mathop{\rm Var}}
+\newcommand{\R}{{ R\hspace*{-1.5ex}\rule{0.15ex}{1.5ex}\hspace*{0.9ex}}}
+\newfam\msbmfam
+\font\tenmsbm=msbm10 \textfont\msbmfam=\tenmsbm
+\font\sevenmsbm=msbm7 \scriptfont\msbmfam=\sevenmsbm
+\font\fivemsbm=msbm5 \scriptscriptfont\msbmfam=\fivemsbm
+\def\msbm {\fam\msbmfam\tenmsbm}
+\def \R {{\msbm R }} % definition pour les rï¿œels
+\def \N {{\msbm N}} % definition pour les entiers naturels
+\def \Z {{\msbm Z}} % definition pour les entiers naturels
+\setlength{\oddsidemargin}{-1cm} \setlength{\evensidemargin}{1cm}
+\textwidth 17.5cm \topmargin -1cm \textheight 23.5cm
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+\usepackage{authblk}
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%%\documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%\biboptions{super, sort}
+\pagestyle{fancy}
+\headheight=14pt
+% \biboptions{}
+%\sloppy
+
+
+\fancyhf{}
+\rhead{ Journal}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\title {Image Denoising based on a variable spatially exponent PDE}
+%\author[a]{AMINE LAGHRIB \footnote{laghrib.amine@gmail.com}}
+%\author[a]{ LEKBIR AFRAITES}
+%%\affil[a]{Laboratoire SIE, Université IBN ZOHR Agadir, Morocco.}
+%\affil[a]{LMA FST Béni-Mellal, Université Sultan Moulay Slimane
+% Morocco.}
+
+%\footnote{corresponding author: Email}
+%\footnote{Email1}
+%\footnote{Email2}
+%\affil[]{The class file is designed for an unlimited number of authors. A minimum of one author is required. Authors' names should be listed from left to right, then to the next line. This author order will be used in future citations and by indexing services. Affiliations should be kept as brief as possible (e.g., do not differentiate between two authors from the same organization).}
+
+\title {$\psi$-Fractional Power Series Approach for Solving Fractional Differential Equations Involving $\psi$-Caputo Derivative }
+
+\author[1]{Youness Assebbane\thanks{\texttt{youness.assebbane.97@edu.uiz.ac.ma}}}
+\author[1]{Mohamed Echchehira\thanks{\texttt{mohamed.echchehira.57@edu.uiz.ac.ma}}}
+
+\author[2]{Mohamed Hannabou\thanks{\texttt{m.hannabou@usms.ma} (Corresponding author)}}
+\author[1]{Mustapha Atraoui\thanks{\texttt{m.atraoui@uiz.ac.ma}}}
+\author[3]{Mohamed Bouaouid\thanks{\texttt{bouaouidfst@gmail.com}}}
+
+\affil[1]{Ibn Zohr University, Faculty of Applied Sciences, Agadir, Morocco}
+\affil[2]{Sultan Moulay Slimane University, Multidisciplinary Faculty, Beni Mellal, Morocco}
+\affil[3]{Sultan Moulay Slimane University, National School of Applied Sciences, Beni Mellal, Morocco}
+
+\date{}  % Removes the date
+
+
+
+\fancyhf{}
+
+%\rhead{ \begin{footnotesize}
+%International Conference on Mathematics \& Data Science 2 (ICMDS-2021) Khouribga, Morocco, 28-30 October, 2021
+%\end{footnotesize}}
+\rfoot{\thepage }
+
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%Introduction %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip 3ex 
+
+\section{Introduction  }
+Fractional calculus has recently attracted considerable attention for its ability to generalize integration and differentiation to non-integer orders. This powerful mathematical tool has found successful applications across multiple disciplines, particularly for modeling systems with memory-dependent behavior and non-local interactions. Current implementations include viscoelastic material analysis \cite{Meral}, quantum mechanical phenomena \cite{El-Nabulsi,Zhang}, electromagnetic theory \cite{Engheta}, electrochemical systems \cite{Oldham}, advanced signal processing \cite{Yang}, and biological modeling \cite{Magin}. The growing adoption of these methods underscores the need to develop rigorous mathematical foundations for fractional operators and establish reliable techniques for solving fractional differential equations. Comprehensive treatments of fractional calculus theory and applications can be found in \cite{kilbas1,Diethelm}.\\
+Therefore, there was a critical need to determine solutions for fractional differential models to rigorously establish their theoretical properties and deepen the understanding of fractional-order physical phenomena. To address this need, fractional power series (FPS) expansions have been rigorously developed and analyzed \cite{Odibat,Trujillo,Ahmad,El-Ajou}.Specifically in \cite{Ahmad}, the authors have proposed solutions of fractional differential equations expressed in power series of the form:
+\begin{align}
+\sum_{n=0}^{\infty} \gamma_n(t-t_0)^{n \nu} = \gamma_0 + \gamma_1(t-t_0)^\nu + \gamma_2(t-t_0)^{2 \nu} + \cdots
+\end{align}
+
+where $k \in \mathbb{N}^*$, $\nu \in (k-1,k]$, and $t \geq t_0$. This expression represents a fractional power series (FPS) centered at $t_0$, where $t$ is the independent variable and $\{\gamma_n\}_{n\in\mathbb{N}}$ are the series coefficients. In the same spirit, many authors have generalized the form of the last series, including the so-called generalized fractional power series \cite{Jaradat} of the following form:
+\begin{align}
+   \sum_{n \geq 0, m \geq 0}^{\infty} \gamma_{(n,m)} (t-t_0)^{n\nu + m} = \nonumber& \underbrace {\gamma_{(0,0)}}_{n+m=0} + \underbrace{\left(\gamma_{(0,1)} (t-t_0) + \gamma_{(1,0)} (t-t_0)^\nu\right)}_{n+m=1}\\
+   &+ \underbrace{\left(\gamma_{(0,2)} (t-t_0)^2 + \gamma_{(1,1)} (t-t_0)^{\nu+1} + \gamma_{(2,0)} (t-t_0)^{2\nu}\right)}_{n+m=2} + \dots \label{E3} 
+\end{align}
+
+where \( n, m \in \mathbb{N} \), \( t \geq t_0 \), and \( \gamma_{(n,m)} \) are the series coefficients. \\
+However, we note that conventional power series expansions are inadequate for many problems involving $\psi$-Caputo derivatives due to their intrinsic dependence on the kernel function $\psi(t)$. The $\psi$-Caputo operator, which differentiates with respect to a function $\psi$ \cite{Almeida}, offers a flexible framework whose accuracy depends on the choice of operator form and the suitability of the trial function. This was validated through various applications: \cite{Almeida1} achieved improved data fitting using least-squares optimization with different kernels for modeling GDP and epidemics, while \cite{Almeida2} enhanced population growth predictions with Mittag-Leffler solutions. \cite{Aydi} further developed the theory for $\psi$-Caputo thermostats, providing existence and uniqueness results and numerical methods and so on . When $\psi$ takes specific forms, the operator recovers known derivatives such as Caputo \cite{Caputo}, Caputo-Hadamard \cite{Caputo-Hadamard}, and Caputo-Erdélyi-Kober \cite{Kober}, unifying various approaches in fractional calculus.\\
+To address this limitation, we develop a generalized $\psi$-fractional power series ($\psi$-GFPS) expansion that extends analytical solutions to arbitrary $\psi$-Caputo derivatives. The proposed solution takes the form:
+\begin{align}
+   \sum_{n \geq 0, m \geq 0}^{\infty} \gamma_{(n,m)} (\psi(t)-\psi(t_0))^{n\nu + m} = \nonumber& \underbrace {\gamma_{(0,0)}}_{n+m=0} + \underbrace{\left(\gamma_{(0,1)} (\psi(t)-\psi(t_0)) + \gamma_{(1,0)} (\psi(t)-\psi(t_0))^\nu\right)}_{n+m=1}\\
+   \nonumber&+ \underbrace{\left(\gamma_{(0,2)} (\psi(t)-\psi(t_0))^2 + \gamma_{(1,1)} (\psi(t)-\psi(t_0))^{\nu+1} + \gamma_{(2,0)} (\psi(t)-\psi(t_0))^{2\nu}\right)}_{n+m=2}  \\
+   &+ \dots \label{E32}
+\end{align}
+where \( n, m \in \mathbb{N} \), \( t \geq t_0 \), and \( \gamma_{(n,m)} \) are the series coefficients and $\psi \in C^k([t_0, +\infty))$ is strictly increasing with $\psi'(t) > 0$ for all $t \geq t_0$. Notably, this framework recovers the classical Caputo-compatible expansions (Eq. \ref{E3}) when $\psi(t) = t$, demonstrating its generality.
+The rest of  work is organized as follows: Section 2 introduces the fundamental mathematical preliminaries. Section 3 presents the development of our Generalized $\psi$-Fractional Power Series ($\psi$-GFPS) methodology and its theoretical foundations. Section 4 demonstrates the application of our approach through representative examples. Finally, Section 5 summarizes the key findings and principal contributions of this research.
+
+	\section{Preliminaries}
+	In this section, we present the essential notations, definitions, Properties, and results concerning the $\psi$-Caputo fractional derivative \cite{Almeida}, which will be employed throughout this paper. In what follows, $\nu > 0$ denotes a real number, $y: [t_0, t_1] \rightarrow \mathbb{R}$ represents an integrable function, and $\psi \in C^k([t_0, +\infty))$ is strictly increasing with $\psi'(t) > 0$ for all $t \geq t_0$.
+	\begin{definition}
+		For $\nu \in \mathbb{R}^{+}$ and $t \geq 0$, the $\psi$- Riemann-Liouville integral of order $\nu$ is defined as:
+		\begin{align}
+			I_{t_{0}+}^{\nu, \psi} y(t):=\frac{1}{\Gamma(\nu)} \int_{t_{0}}^t \psi^{\prime}(\tau)(\psi(t)-\psi(\tau))^{\nu-1} y(\tau) d \tau
+		\end{align}
+		where the Euler gamma function $\Gamma(\cdot)$ is given by
+		$$
+		\Gamma(z) = \int_0^{\infty} t^{z-1} e^{-t} \, dt \quad (\mathbb{R}(z) > 0).
+		$$
+	\end{definition}
+	\begin{definition}
+		For $0\leq k-1 < \nu \leq k$ and $t \geq t_{0}$, the $\psi$-Riemann-Liouville derivative of order $\nu$ is defined as:
+		\begin{align}
+			\begin{aligned}
+D_{t_{0}+}^{\nu, \psi} y(t) & :=\left(\frac{1}{\psi^{\prime}(t)} \frac{d}{d t}\right)^k I_{{t_{0}}+}^{k-\nu, \psi} y(t) \\
+& =\frac{1}{\Gamma(k-\nu)}\left(\frac{1}{\psi^{\prime}(t)} \frac{d}{d t}\right)^k \int_{t_{0}}^t \psi^{\prime}(\tau)(\psi(t)-\psi(\tau))^{k-\nu-1} y(\tau) d \tau
+\end{aligned}
+		\end{align}
+	\end{definition}
+	
+	\begin{definition}
+		For $0\leq k-1 < \nu \leq k$ and $t \geq t_{0}$,  the $\psi$-Caputo derivative of order $\nu$ is 
+	
+		\begin{align}
+			{ }^C D_{t_{0}+}^{\nu, \psi} y(t)=\frac{1}{\Gamma(k-\nu)} \int_{t_{0}}^t \psi^{\prime}(\tau)(\psi(t)-\psi(\tau))^{k-\nu-1} y_\psi^{[k]}(\tau) d \tau . \label{E7}
+		\end{align}
+		where
+
+
+$$
+y_\psi^{[k]}(t):=\left(\frac{1}{\psi^{\prime}(t)} \frac{d}{d t}\right)^k y(t)
+$$
+
+	\end{definition}
+	
+	
+	\begin{property}
+		
+		If $0\leq k-1 < \nu \leq k$ and $\mu>0 $, then
+		
+		
+		\begin{align}
+			& \left(^{C}D_{t_{0}+}^{\nu, \psi} (\psi(t)-\psi(t_{0}))^{\mu-1}\right)(\xi) = \frac{\Gamma(\mu)}{\Gamma(\mu-\nu)} (\psi(\xi)-\psi(t_{0}))^{\mu-\nu-1}. \label{E8}
+		\end{align}
+		
+		
+		Moreover, for $m=0,1,. \ldots, k-1$.
+		
+		\begin{align}
+			\left(^{C}D_{t_{0}+}^{\nu, \psi} (\psi(t)-\psi(t_{0}))^{m}\right)(\xi) = 0.\label{E7}
+		\end{align}
+		
+	\end{property}
+	
+	\begin{definition} 
+		If $\nu\in \mathbb{R}^{+}$ and $z \in \mathbb{R}$, the Mittag-Leffler function is defined as:
+		$$
+		E_{\nu}(z)=\sum_{n=0}^{\infty} \frac{z^n}{\Gamma(\nu n+1)}.
+		$$
+		
+	\end{definition}
+	\begin{definition} 
+		If $\nu, \mu \in \mathbb{R}^{+}$ and $z \in \mathbb{R}$, the generalized Mittag-Leffler function is defined as:
+		$$
+		E_{(\nu, \mu)}(z)=\sum_{n=0}^{\infty} \frac{z^n}{\Gamma(\nu n+\mu)}.
+		$$
+		
+	\end{definition}
+	
+	
+	
+	
+	
+	\section{Generalized $\psi$-Fractional Power Series}
+	In this section, we exhibit a coherent representation of $\psi$-fractional power series with a related convergence theorem. Unlike the well-known expansions, the exponents of the indeterminate consist of sufficient positive integers and a $\psi$-dependent description in terms of the fractional derivative order $\nu > 0$. 
+
+	
+	
+	\begin{definition}
+		The  generalized $\psi$-Fractional Power Series ($\psi$-GFPS) is an infinite series of the form:
+		
+		\begin{align}
+			\sum_{n \geq 0, m \geq 0}^{\infty} \gamma_{(n, m)} (\psi(t)-\psi(t_{0}))^{n \nu+m}           \quad\quad  , \quad k-1 < \nu\leq k, \label{E32}
+		\end{align}
+		
+		where $k\in \mathbb{N}^{*}$, and \( t \geq t_0 \) serves as an indeterminate variable, while $ \gamma(n,m) $ represents the coefficients of the series and $\psi \in C^k([t_0, +\infty))$ is strictly increasing with $\psi'(t) > 0$ for all $t \geq t_0$.
+	\end{definition}
+   The $\psi$-GFPS expansion (Eq.\ref{E32}) constitutes a substantial extension beyond conventional fractional power series \cite{Jaradat,Angstmann1,El-Ajou,Ahmad,Odibat}. This formulation achieves two complementary objectives: first, it exactly recovers the classical Caputo-compatible expansions when $\psi(t) = t$ \cite{Jaradat}; second, through $\psi(t)$ it generalizes  Hadamard and  Kober derivatives while preserving their fundamental operator properties. The resulting unified framework preserves all essential convergence properties while significantly broadening the scope of applicable fractional calculus problems.
+	\begin{lemma}
+    Let $k-1<\nu \leq k$, $k\in\mathbb{N}^{*}$. 
+    The equality $\left(^{C}D_{t_{0}+}^{\nu, \psi} y\right)(t)=0$ is valid if, and only if,
+    
+    \begin{align}
+        y(t)=\sum_{m=0}^{k-1} a_m (\psi(t)-\psi(t_{0}))^{m},
+    \end{align}
+    
+    where $a_m \in \mathbb{R^{*}}$.
+\end{lemma}
+
+	\begin{proof}
+    Applying the $\psi$-Caputo fractional derivative \( ^{C}D_{t_{0}+}^{\nu, \psi} \) and using its linearity:
+    \begin{align}
+        ^{C}D_{t_{0}+}^{\nu, \psi} y(t) = \sum_{m=0}^{k} a_{m} \; ^{C}D_{t_{0}+}^{\nu, \psi} \left( \psi(t) - \psi(t_{0}) \right)^{m}.
+    \end{align}
+    By (Eq.\ref{E7}), we know that 
+    \begin{align}
+    \left(^{C}D_{t_{0}+}^{\nu, \psi} (\psi(t) - \psi(t_{0}))^{m}\right)(\xi) = 0,
+   \end{align}
+    for \( m = 0, 1, \ldots, k-1 \). Thus, we obtain:
+    \begin{align}
+    \left(^{C}D_{t_{0}+}^{\nu, \psi} y\right)(t) = 0.
+    \end{align}
+\end{proof}
+	\begin{theorem}
+		Let $y(t) = \sum_{n,m\geq0} \gamma_{(n,m)} (\psi(t)-\psi(t_0))^{n\nu + m}$ be a $\psi$-fractional power series with $0 \leq k-1 < \nu \leq k$ for some integer $k \geq 1$. If the series converges with radius $R_{\psi} > 0$ and satisfies $0 < \psi(t) - \psi(t_0) < R_{\psi}$, then the following properties hold:
+		\begin{align}
+			^{C}D_{t_{0}+}^{\nu, \psi} y(t)= &\nonumber \sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{m!}{\Gamma(m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\\ &+\sum_{\substack{ n \geq 1, m\geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-1)\nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-1)\nu+m}, \label{E34}
+		\end{align}
+		\begin{align}	^{C}D_{t_{0}+}^{2\nu, \psi} y(t)= &\nonumber \sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{m!}{\Gamma(m-2\nu+1)}(\psi(t)-\psi(t_{0}))^{m-2\nu} \\
+			&\nonumber + \sum_{\substack{  m \geq k}}^{\infty} \gamma_{(1, m)} \frac{\Gamma(\nu+m+1)}{\Gamma( m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\\
+            & + \sum_{\substack{ n \geq 2, m \geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-2) \nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-2)\nu+m}.\label{E36}
+		\end{align}
+	\end{theorem}
+	\begin{proof}
+		Starting from equation (Eq.\ref{E7}) and using the properties of the $\psi$-Caputo fractional derivative operator ${}^C D_{t_{0}+}^{\nu, \psi}$ (given in equation \eqref{E8}), we can conclude that: 
+		\begin{align}
+			{ }^C D_{t_{0}+}^{\nu, \psi} y(t) \nonumber &=\sum_{ m \geq 0}^{\infty}\gamma_{(0, m)} \left(^{C}D_{t_{0}+}^{\nu, \psi} (\psi(t)-\psi(t_{0}))^{m}\right) + \sum_{n \geq 1, m \geq 0}^{\infty} \gamma_{(n, m)}\left(^{C}D_{t_{0}+}^{\nu, \psi} (\psi(t)-\psi(t_{0}))^{n\nu+m}\right) . \\
+			= &\nonumber \sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{m!}{\Gamma(m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\\ 
+            &\nonumber+\sum_{\substack{ n \geq 1, m\geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-1)\nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-1)\nu+m}.\\ 
+            \end{align}
+           To establish the proof, we employ the semigroup property of the $\psi$-Caputo fractional derivative, by which the composition of two derivatives of order $\nu$ is equivalent to a single derivative of order $2\nu$.
+           \begin{align}
+           { }^C D_{t_{0}+}^{\nu, \psi}  \left[{ }^C D_{t_{0}+}^{\nu, \psi}y(t)\right]\nonumber&= { }^C D_{t_{0}+}^{\nu, \psi}  \bigg(\sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{\Gamma(m+1)}{\Gamma(m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\\ &\nonumber+\sum_{\substack{ n \geq 1, m\geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-1)\nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-1)\nu+m} \bigg) \\
+           \nonumber&= { }^C D_{t_{0}+}^{\nu, \psi}  \bigg(\sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{\Gamma(m+1)}{\Gamma(m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\bigg)\\ 
+           &\nonumber+{ }^C D_{t_{0}+}^{\nu, \psi}\bigg(\sum_{\substack{  m\geq 0}}^{\infty} \gamma_{(1, m)} \frac{\Gamma(\nu+m+1)}{m!} (\psi(t)-\psi(t_{0}))^{m}\\
+           &\nonumber+\sum_{\substack{ n \geq 2, m\geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-1)\nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-1)\nu+m}\bigg) \\
+           &\nonumber =\sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{m!}{\Gamma(m-2\nu+1)}(\psi(t)-\psi(t_{0}))^{m-2\nu} \\
+			&\nonumber + \sum_{\substack{  m \geq k}}^{\infty} \gamma_{(1, m)} \frac{\Gamma(\nu+m+1)}{\Gamma( m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}\\
+            & + \sum_{\substack{ n \geq 2, m \geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-2) \nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-2)\nu+m},
+		\end{align}
+        where $^{C}D_{t_{0}+}^{2\nu, \psi}y(t)={ }^C D_{t_{0}+}^{\nu, \psi}  \left[{ }^C D_{t_{0}+}^{\nu, \psi} y(t)\right]$ \cite{Almeida} .
+	\end{proof}
+    The coefficients $\gamma_{(n,m)}$ can be computed through successive evaluation of $\psi$-Caputo derivatives at $t_0$, providing a systematic method for constructing solutions as established in the following theorem.
+    
+\begin{theorem}
+Suppose that $y$ has a $\psi$-GFPS representation at $t=t_0$ of the form
+$$
+y(t)=\sum_{n=0}^{\infty}\sum_{m=0}^{\infty} \gamma_{(n,m)} (\psi(t)-\psi(t_{0}))^{n\nu+m}, \quad 0 \leqslant k-1<\nu \leqslant k, \quad \psi(t_0) \leqslant \psi(t) < \psi(t_0) + R_\psi.
+$$
+
+If:
+\begin{itemize}
+\item $y(t) \in C^\infty[t_0, t_0 + R_t)$ where $R_t = \psi^{-1}(\psi(t_0)+R_\psi) - t_0$,
+\item $^{C}D_{t_0}^{n\nu,\psi} y(t) \in C^\infty(t_0, t_0 + R_t)$ for all $n \in \mathbb{N}$.
+\end{itemize}
+then the coefficients $\gamma_{(n,m)}$ are given by
+\begin{align}
+\gamma_{(n,m)}=\frac{^{C}D_{t_{0}}^{m,\psi} \;^{C}D_{t_{0}}^{n\nu,\psi}y(t_0)}{\Gamma(m+n\nu+1)}, \quad n,m \in \mathbb{N}_0.
+\end{align}
+\end{theorem}
+\begin{proof}
+Applying the $\psi$-Caputo derivative term-wise to the series representation yields:
+\begin{align}
+^{C}D_{t_0}^{n\nu,\psi} y(t) = \sum_{n \geq 0, m\geq 0} \gamma_{n,m} \frac{\Gamma(n\nu + m + 1)}{\Gamma(m + 1)} (\psi(t) - \psi(t_0))^m ,
+\end{align}
+Evaluation at $t = t_0$ isolates the $m = 0$ term:
+\begin{align}
+^{C}D_{t_0}^{n\nu,\psi} y(t_0) = \gamma_{n,0} \Gamma(n\nu + 1),
+\end{align}
+For $m \geq 1$, taking the $m$-th $\psi$-derivative and evaluating at $t_0$ gives:
+\begin{align}
+^{C}D_{t_0}^{m,\psi} \left(^{C}D_{t_0}^{n\nu,\psi} y(t_0)\right) = \gamma_{(n,m)} \Gamma(n\nu + m + 1),
+\end{align}
+Solving for $\gamma_{(n,m)}$ produces the coefficient formula:
+\begin{align}
+\gamma_{(n,m)} = \frac{^{C}D_{t_0}^{m,\psi} \, ^{C}D_{t_0}^{n\nu,\psi} y(t_0)}{\Gamma(n\nu + m + 1)}
+.\end{align}
+
+\end{proof}
+
+	Additionally, the generalized fractional power series (Eq.\ref{E32}) can be derived naturally as the Cauchy product of two power series, following a rearrangement, as shown below:  
+	\begin{align}
+		&\sum_{n \geq 0, m\geq 0}^{\infty} \gamma_{(n, m)} (\psi(t)-\psi(t_{0}))^{n\nu+m}=\left(\sum_{n=0}^{\infty} c_n (\psi(t)-\psi(t_{0}))^{n \nu}\right)\left(\sum_{m=0}^{\infty} d_m (\psi(t)-\psi(t_{0}))^m\right).
+	\end{align}
+	where $\gamma_{(n,m)}=c_n d_m $.\\
+	
+	\begin{proposition}
+If \(\sum_{n=0}^{\infty} c_n (\psi(t) - \psi(t_0))^{n \nu}\) converges for some \(\psi(t) - \psi(t_0) = c > 0\), then it converges absolutely for all \(t\) such that \(\psi(t) - \psi(t_0) \in (0, c)\).
+\end{proposition}
+
+\begin{proof}
+Fix \(\epsilon = 1\). By the convergence of \(\sum_{n=0}^{\infty} c_n c^{n \nu}\), there exists \(N \in \mathbb{N}\) such that \(|c_n c^{n \nu}| < 1\) for all \(n \geq N\). Thus, for \(n \geq N\) and \(\psi(x) - \psi(x_0) \in (0, c)\), we have:
+\begin{align}
+|c_k (\psi(t) - \psi(t_0))^{n \nu}| < \left(\frac{\psi(t) - \psi(t_0)}{c}\right)^{n \nu}.
+\end{align}
+The series \(\sum_{n=0}^{\infty} \left(\frac{\psi(t) - \psi(t_0)}{c}\right)^{n \nu}\) is a geometric series with ratio \(\left(\frac{\psi(t) - \psi(t_0)}{c}\right)^\nu < 1\), and hence it converges. By the comparison test, the series \(\sum_{n=0}^{\infty} |c_n (\psi(x) - \psi(t_0))^{n \alpha}|\) converges absolutely for \(\psi(t) - \psi(t_0) \in (0, c)\).
+\end{proof}
+	
+	\begin{corollary}
+		If $\sum_{n=0}^{\infty} d_n (\psi(t)-\psi(t_{0}))^n$ converges for some $(\psi(t)-\psi(t_{0}))=d>0$, then it converges absolutely for $(\psi(t)-\psi(t_{0}))\in(0, d)$.
+	\end{corollary}
+    The following result extends Mertens' classical theorem by establishing necessary convergence conditions for (Eq.\ref{E32}).
+	\begin{theorem}
+		Let \(\psi\) be an increasing function, and consider the two series:
+\[
+A = \sum_{n=0}^\infty c_n (\psi(t) - \psi(t_0))^{n\nu}, \quad B = \sum_{m=0}^\infty d_m (\psi(t) - \psi(t_0))^m,
+\]
+where:
+\begin{enumerate}
+    \item \(A\) converges absolutely to \(a\) for \(\psi(t) - \psi(t_0) < R_1\),
+    \item \(B\) converges to \(b\) for \(\psi(t) - \psi(t_0) < R_2\).
+\end{enumerate}
+
+Then, the Cauchy product \(C\) of \(A\) and \(B\), defined as:
+\[
+C = \sum_{k=0}^\infty \gamma_k (\psi(t) - \psi(t_0))^k, \quad \text{where} \quad \gamma_k = \sum_{i=0}^k c_i d_{k-i},
+\]
+converges to \(ab\) for \(\psi(t) - \psi(t_0) < R\), where \(R = \min\{R_1, R_2\}\).
+	\end{theorem}  
+	
+    \begin{proof}
+Consider the partial sums:
+\begin{align*}
+A_n &= \sum_{k=0}^n c_k (\psi(t) - \psi(t_0))^{k\nu}, \\
+B_n &= \sum_{k=0}^n d_k (\psi(t) - \psi(t_0))^k, \\
+C_n &= \sum_{k=0}^n \gamma_k (\psi(t) - \psi(t_0))^k,
+\end{align*}
+where $\gamma_k = \sum_{i=0}^k c_i d_{k-i}$.
+
+We can express $C_n$ as:
+\begin{align*}
+C_n &= \sum_{k=0}^n \left(\sum_{i=0}^k c_i d_{k-i}\right) (\psi(t) - \psi(t_0))^k \\
+&= \sum_{i=0}^n c_i (\psi(t) - \psi(t_0))^{i\nu} \sum_{j=0}^{n-i} d_j (\psi(t) - \psi(t_0))^j \\
+&= \sum_{i=0}^n c_i (\psi(t) - \psi(t_0))^{i\nu} B_{n-i}.
+\end{align*}
+
+Let $\tilde{B}_{n-i} = B_{n-i} - b$, where $b = \lim_{n\to\infty} B_n$. Then:
+\begin{align*}
+C_n &= bA_n + \sum_{i=0}^n c_i (\psi(t) - \psi(t_0))^{i\nu} \tilde{B}_{n-i}.
+\end{align*}
+
+Since $A_n \to a$ and $\tilde{B}_n \to 0$, we focus on the remainder term. For any $\epsilon > 0$:
+\begin{enumerate}
+    \item There exists $M > 0$ such that $|\tilde{B}_k| \leq M$ for all $k \in \mathbb{N}$
+    \item There exists $n_0 \in \mathbb{N}$ such that $|\tilde{B}_k| < \frac{\epsilon}{2a}$ for all $k \geq n_0$
+\end{enumerate}
+
+We bound the remainder:
+\begin{align*}
+\left| \sum_{i=0}^n c_i (\psi(t) - \psi(t_0))^{i\nu} \tilde{B}_{n-i} \right| 
+&\leq \sum_{i=0}^{n-n_0-1} |c_i (\psi(t) - \psi(t_0))^{i\nu}| M \\
+&\quad + \sum_{i=n-n_0}^n |c_i (\psi(t) - \psi(t_0))^{i\nu}| \frac{\epsilon}{2a}.
+\end{align*}
+
+By absolute convergence of $A$, there exists $n_1$ such that for $n > n_0 + n_1$:
+\begin{align*}
+\sum_{i=n-n_0}^n |c_i (\psi(t) - \psi(t_0))^{i\nu}| < \frac{\epsilon}{2M}.
+\end{align*}
+
+Thus, for $n > n_0 + n_1$:
+\begin{align*}
+\left| C_n - ab \right| < \epsilon.
+\end{align*}
+
+Therefore, $C_n \to ab$ as $n \to \infty$, proving the convergence of the Cauchy product $C$ to $ab$ for $\psi(t) - \psi(t_0) < R$, where $R = \min\{R_1, R_2\}$.
+\end{proof}
+    
+	\section{Application }
+	To illustrate the effectiveness of our proposed method, we apply the generalized $\psi$-fractional power series expansion to solve several fractional differential equations.
+	\begin{example}
+			Let $k-1<\nu \leq k$,$k\in\mathbb{N}^{*}$ and $\rho  \neq 0$. Consider the initial value problem defined by the following differential equation 
+		\begin{align}
+			^{C}D_{t_{0}+}^{\nu, \psi} y(t)+ \rho y(t)&=0, \label{E310}\\
+			   y_\psi^{[j]}(t_{0})&=y_{\psi}^j, \quad j=0,1, \ldots, k-1.
+		\end{align}
+		
+	 
+	\end{example}
+	
+		Let us consider the $\psi$-Caputo generalized fractional power series expansion, represented by the infinite series:\\
+		\begin{align}
+		      y(t)=\sum_{n \geq 0, m \geq 0}^{\infty} \gamma_{(n, m)} (\psi(t)-\psi(t_{0}))^{n\nu+m}  \quad\quad \label{E312} 
+              \end{align} 
+		We then substitute (\ref{E34}) and (\ref{E312}) into (\ref{E310}) to arrive at the balance equation:
+		
+		
+		
+		\begin{align}
+			\nonumber &\sum_{\substack{m \geq k}}^{\infty} \gamma_{(0, m)} \frac{m!}{\Gamma(m-\nu+1)} (\psi(t)-\psi(t_{0}))^{m-\nu}+\sum_{\substack{ n \geq 1, m\geq 0}}^{\infty} \gamma_{(n, m)} \frac{\Gamma(n\nu+m+1)}{\Gamma((n-1)\nu+m+1)} (\psi(t)-\psi(t_{0}))^{(n-1)\nu+m}\\
+			\nonumber &\ =-\rho\sum_{ n \geq 1, m \geq 0}^{\infty} \gamma_{(n-1, m)} (\psi(t)-\psi(t_{0}))^{(n-1) \nu+m}.\\
+		\end{align}
+		We can immediately deduce that
+		\begin{align}
+			\gamma_{(0, m)} & =0 \quad m \geq k, \label{E316} \\
+			\gamma_{(n, m)} & =- \rho\frac{\Gamma((n-1)\nu+m+1)}{ \Gamma(n \nu+m+1)} \gamma_{(n-1, m)} \quad n \geq 1, m \geq 0.\label{E317}
+		\end{align}
+		
+		From (\ref{E316}) and the the recurrence relation  (\ref{E317}), it follows that \(\gamma_{(n, m)} = 0\) for all \(n \geq 0\) and \(m \geq k\). Consequently, the only non-zero coefficients are those with \(m < k\), resulting in a solution of the form:
+		$$
+		y(t)=\sum_{m=0}^{k-1}\sum_{n=0}^{\infty} \gamma_{(n,m)}(\psi(t)-\psi(t_{0}))^{n\nu+m}=\sum_{m=0}^{k-1}(\psi(t)-\psi(t_{0}))^{m}\sum_{n=0}^{\infty} \gamma_{(n,m)}(\psi(t)-\psi(t_{0}))^{n\nu}
+		$$
+		From (\ref{E317})  we  have 
+		\begin{align}
+		\gamma_{(n,m)}=-\rho\frac{\Gamma((n-1)\nu+m+1)}{\Gamma(n\nu+m+1)} \gamma_{(n-1,m)} \quad n \geq 1,  m\leq k-1 .
+		\end{align}
+		
+		Equivalently we can write
+		\begin{align}
+		\gamma_{(n,m)}=(-1)^{n}\frac{\rho^{n}m!}{\Gamma(n\nu+m+1)} \gamma_{(0,m)} \quad n \geq 1, \quad m\leq k-1 .
+		\end{align}
+		where $\gamma_{(0,m)}=\frac{y_\psi^{[m]}(t_{0})}{m!}$ and we deduce that :
+		
+		\begin{align}
+		\gamma_{(n,m)}=(-1)^{n}\frac{\rho^{n}}{\Gamma(n\nu+m+1)} y_\psi^{m}\quad n \geq 1,\quad m\leq k-1.
+        \end{align}
+		
+		Consequently, the solution admits the series representation:
+		
+		
+		\begin{align}
+			y(t) =\sum_{m=0}^{k-1} y_\psi^{m}(\psi(t)-\psi(t_{0}))^{m}E_{\nu,m+1}\left(-\rho (\psi(t)-\psi(t_{0}))^\nu\right) .
+		\end{align}
+	
+    
+Let's now move on to another example, which focuses on inhomogeneous fractional differential equations to demonstrate the applicability of our approach.
+    
+	\begin{example}
+		Consider the $\psi$-Caputo fractional initial value problem:
+		
+		\begin{align}
+			^{C}D_{t_{0}+}^{\nu, \psi}  \left[ y(t) \right] - \rho y(t) = \frac{(\psi(t)-\psi(t_{0}))^{2-\nu}}{\Gamma(3-\nu)},\quad \quad  y(t_{0})  = y_0.\label{E319}
+		\end{align}
+		
+		where \( 0 < \nu \leq 1 \) and \( t \geq t_{0}\).In light of the preceding analysis and applying the initial condition, the generalized fractional power series solution to problem (\ref{E319}) admits the representation:
+		
+		\begin{align}
+			y(t)=\sum_{n \geq 0, m\geq 0}^{\infty} \gamma_{(n, m)} (\psi(t)-\psi(t_{0}))^{n\nu+m} .  \label{E320} 
+		\end{align}
+		By substituting equations (\ref{E34}) and (\ref{E320}) into (\ref{E319}) and by  comparing coefficients of corresponding powers in the series expansion, we derive the recurrence relations:
+		\begin{align}
+			\gamma_{(0, 2)} & =\frac{1}{2} , \\
+			\gamma_{(0, m)} & =0 \quad m\in\{1,3,4, \ldots\}, \\
+			\gamma_{(n, m)} & =\rho\frac{\Gamma((n-1)\nu+m+1)}{ \Gamma(n \nu+m+1)} \gamma_{(n-1, m)} \quad n \geq 1, m \geq 0.
+		\end{align}
+		This consequently implies that for \( n \geq 1 \):
+		\[
+		\gamma_{(n,0)} = \frac{\rho^{n}}{\Gamma(n\nu+1)} y_0, \quad \gamma_{(n,2)} = \frac{\rho^{n}}{\Gamma(n\nu+3)} , \quad \text{and} \quad \gamma_{(n,m)} = 0 \quad, \text{otherwise}.
+		\]
+		
+		Consequently, the precise solution to equation (\ref{E319}) is: 
+		
+		
+		\begin{align}
+			y(t)\nonumber & =y_0 \sum_{n=0}^{\infty} \frac{\rho^n}{\Gamma(n \nu+1)} (\psi(t)-\psi(t_{0}))^{n \nu}+\sum_{n=0}^{\infty} \frac{\rho^n}{\Gamma(n \nu+3)} (\psi(t)-\psi(t_{0})^{n\nu+2} \\
+			& =y_0 E_{\nu}\left(\rho (\psi(t)-\psi(t_{0}))^\nu\right)+ E_{\nu, 3}\left(\rho (\psi(t)-\psi(t_{0}))^\nu\right).
+		\end{align}
+		
+
+
+	\end{example}
+	
+	In Particular when $t_{0}=0$, $\nu=1$ and $\psi(t)=t$, we have the exact solution for the classical version of (Eq.\ref{E319}) : 
+	
+	\begin{align}
+	y(t)=\left(y_0+\frac{1}{\rho^2}\right) e^{\rho (t-t_{0})}-\frac{1}{\rho^2}(\rho (t-t_{0})+1).
+	\end{align}
+	
+	
+	Notably, the solution for (Eq.\ref{E319}) cannot be derived through other available FPS expansions, such as those in \cite{Jaradat,Angstmann1,El-Ajou,Ahmad,Odibat}.
+	\begin{example}
+		
+		Consider the $\psi$-Caputo fractional initial value problem:
+		
+		\begin{align}
+			^{C}D_{t_{0}+}^{2\nu, \psi}( y(t))-2 ^{C}D_{t_{0}+}^{\nu, \psi}[y(t)]+y(t)=\frac{(\psi(t)-\psi(t_{0}))^{2-2 \nu}}{\Gamma(3-2 \nu)}, \quad 0<\nu \leq 1, t \geq t_0 \label{E327}
+		\end{align}
+	\end{example}
+	
+	
+	Substituting Eqs. (\ref{E32}),  (\ref{E34}), and  (\ref{E36}) into  (\ref{E327}) and equating the coefficients of like powers of $\psi(t)-\psi(t_0)$, we get $\gamma_{(0,2)}=\frac{1}{2}, \gamma_{(0,m)}=0$ for $m \notin$ $\{0,2\}, \gamma_{(1,2)}=\frac{2}{\Gamma(\nu+3)}, \gamma_{(1,m)}=0$ for $m \notin\{0,2\}$, and the following recursive relation
+	
+	\begin{align}
+	\gamma_{(n+2, m)}=\frac{2 \Gamma((n+1) \nu+m+1) \gamma_{(n+1, m)}-\Gamma(n\nu+m+1) \gamma_{(n,m)}}{\Gamma((n+2) \nu+m+1)} .
+	\end{align}
+	
+	
+	This yields that
+	
+	\begin{align}
+		\gamma_{(n,0)} & =\frac{n\Gamma(\nu+1) \gamma_{(1,0)}-(n-1)\Gamma{(\nu)} \gamma_{(0,0)}}{\Gamma(n\nu+1)}, & & n \geq 2 \\
+		\gamma_{(n,2)} & =\frac{n+1}{\Gamma(n \nu+3)}, & & n \geq 0 \\
+		\gamma_{(n,m)} & =0, & & \text { otherwise. }
+	\end{align}
+	
+	
+	
+	Substituting the resulting coefficients back into the Eq.  (\ref{E327}) gives the following exact "memory" solution
+	
+	
+	\begin{align}
+		y(t)= \nonumber& \gamma_{(1,0)} \Gamma(\nu+1) \sum_{n=0}^{\infty} \frac{n}{\Gamma(n\nu+1)} (\psi(t)-\psi(t_{0}))^{n \nu}-\gamma_{(0,0)}\Gamma(\nu) \sum_{n=0}^{\infty} \frac{(n-1)}{\Gamma(n\nu+1)} (\psi(t)-\psi(t_{0}))^{n \nu} \\
+		& +\sum_{n=0}^{\infty} \frac{(n+1)}{\Gamma(n\nu+3)} (\psi(t)-\psi(t_{0}))^{n \nu+2}. \label{E328}
+	\end{align}
+	
+	
+	We remark here that the existing FPS expansions \cite{Jaradat,Angstmann1,El-Ajou,Ahmad,Odibat} are inadequate for finding the solution to (Eq.\ref{E328}).
+Particularly when $t_{0}=0$, $\nu=1$ and $\psi(t)=t$, we have the exact solution for the classical version of (Eq.\ref{E327}) :
+
+\begin{align}
+y(t)=\underbrace{\gamma_{(0,0)} e^t+\left(\gamma_{(1,0)}-\gamma_{(0,0)}\right) t e^t}_{\text {homogenous solution }}+\underbrace{t e^t-e^t+1}_{\text {particular solution }} .
+\end{align}
+
+
+
+
+
+	\section*{Conclusion and comments}
+
+   In this work, we introduced an adaptable framework for solving
+fractional differential equations of the $\psi$-Caputo type by
+employing a generalized $\psi$- fractional power series approach.
+Theoretical validations and key theorems were provided to establish the
+reliability and applicability of the proposed approach. Furthermore,
+illustrative examples demonstrated its superiority over existing methods,
+highlighting its precision and efficiency in handling complex fractional
+models. The new methodology offers a promising tool for advancing
+research in fractional calculus and can be extended to various scientific
+and engineering applications involving fractional-order systems.
+	\section*{Data Availability}
+	No data were used to support this study.
+	\section*{Conflicts of Interest}
+	The author declares no conflicts of interest.
+	\begin{thebibliography}{99}
+    \bibitem{Jaradat}\label{general form for fractional power}
+		Jaradat, I., et al. "Theory and applications of a more general form for fractional power series expansion." Chaos, Solitons \& Fractals 108 (2018): 107-110.
+    \bibitem{Angstmann1}\label{power series 1}Angstmann, Christopher N., and Bruce Ian Henry. "Generalized fractional power series solutions for fractional differential equations." Applied Mathematics Letters 102 (2020): 106107.
+   Jaradat,Angstmann1,El-Ajou,Ahmad
+    \bibitem{El-Ajou}\label{general form}
+        El-Ajou, Ahmad, Omar Abu Arqub, and Mohammed Al-Smadi. "A general form of the generalized Taylor’s formula with some applications." Applied Mathematics and Computation 256 (2015): 851-859.
+        \bibitem{Ahmad}\label{fractional power}
+		El-Ajou, Ahmad, et al. "New results on fractional power series: theories and applications." Entropy 15.12 (2013): 5305-5323.
+        \bibitem{Odibat}\label{Taylor’s formula}
+		Odibat, Zaid M., and Nabil T. Shawagfeh. "Generalized Taylor’s formula." Applied Mathematics and computation 186.1 (2007): 286-293.
+        \bibitem{Trujillo}\label{ Riemann–Liouville }
+		Trujillo, J. J., M. Rivero, and B. Bonilla. "On a Riemann–Liouville generalized Taylor's formula." Journal of Mathematical Analysis and Applications 231.1 (1999): 255-265.
+        \bibitem{Almeida}\label{respect to another function}
+        Almeida, Ricardo. "A Caputo fractional derivative of a function with respect to another function." Communications in Nonlinear Science and Numerical Simulation 44 (2017): 460-481.
+        \bibitem{Almeida1}\label{best fractional derivative}
+        Almeida, Ricardo. "What is the best fractional derivative to fit data?." Applicable Analysis and Discrete Mathematics 11.2 (2017): 358-368.
+        \bibitem{Almeida2}\label{best fractional derivative}
+        Almeida, Ricardo, Agnieszka B. Malinowska, and M. Teresa T. Monteiro. "Fractional differential equations with a Caputo derivative with respect to a kernel function and their applications." Mathematical Methods in the Applied Sciences 41.1 (2018): 336-352.
+     \bibitem{Aydi}\label{fractional thermostat model}
+        Aydi, Hassen, Mohamed Jleli, and Bessem Samet. "On positive solutions for a fractional thermostat model with a convex–concave source term via $\psi$-Caputo fractional derivative." Mediterranean Journal of Mathematics 17.1 (2020): 16.
+        
+\bibitem{Caputo}\label{Fractional integrals}
+        Samko, Stefan G. "Fractional integrals and derivatives." Theory and applications (1993).
+  \bibitem{Caputo-Hadamard}\label{Caputo modification2}
+        Gambo, Yusuf Y., et al. "On Caputo modification of the Hadamard fractional derivatives." Advances in difference equations 2014 (2014): 1-12.
+
+\bibitem{Kober}\label{Caputo modification2}
+        Luchko, Yury, and Juan Trujillo. "Caputo-type modification of the Erdélyi-Kober fractional derivative." Fractional Calculus and Applied Analysis 10.3 (2007): 249-267.
+   \bibitem{Meral}\label{ viscoelasticity} Meral, F. C., T. J. Royston, and R. Magin. "Fractional calculus in viscoelasticity: an experimental study." Communications in nonlinear science and numerical simulation 15.4 (2010): 939-945.
+ \bibitem{Zhang}\label{Residual power}
+   Zhang, Yu, et al. "Residual power series method for time-fractional Schrödinger equations." J. Nonlinear Sci. Appl 9.11 (2016): 5821-5829.
+\bibitem{Oldham}\label{Advances in Engineering}
+Oldham, Keith B. "Fractional differential equations in electrochemistry." Advances in Engineering software 41.1 (2010): 9-12.
+ \bibitem{Engheta}\label{electromagnetism}
+   Engheta, Nader. "On fractional calculus and fractional multipoles in electromagnetism." IEEE Transactions on Antennas and Propagation 44.4 (1996): 554-566.
+   \bibitem{Magin}\label{biological}
+   Magin, Richard L. "Fractional calculus models of complex dynamics in biological tissues." Computers \& Mathematics with Applications 59.5 (2010): 1586-1593.
+ \bibitem{Yang}\label{image processing}
+   Yang, Qi, et al. "Fractional calculus in image processing: a review." Fractional Calculus and Applied Analysis 19.5 (2016): 1222-1249.
+
+ \bibitem{El-Nabulsi}
+ \label{ Dirac} 
+   El-Nabulsi, Rami Ahmad. "Fractional Dirac operators and deformed field theory on Clifford algebra." Chaos, Solitons \&Fractals 42.5 (2009): 2614-2622.
+		
+		
+		\bibitem{kilbas1}\label{series expansion}
+		Kilbas, Anatoliĭ Aleksandrovich, Hari M. Srivastava, and Juan J. Trujillo. Theory and applications of fractional differential equations. Vol. 204. elsevier, 2006.
+        \bibitem{Diethelm}\label{Lecture notes}
+   Diethelm, Kai, and N. J. Ford. "The analysis of fractional differential equations." Lecture notes in mathematics 2004 (2010).
+		
+		
+
+	\end{thebibliography}
+	
+\end{document}
+
+
+
